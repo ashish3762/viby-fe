@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/viby-logo.png";
 import { Button, Input, Space } from "antd";
+import { signIn } from "../api/auth";
 
 export default function SignIn() {
   const [signInFormInput, setsignInFormInput] = useState({});
@@ -12,9 +13,11 @@ export default function SignIn() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(signInFormInput);
+    const data = await signIn(signInFormInput.username, signInFormInput.password);
+    console.log(data);
   };
 
   return (
@@ -23,7 +26,7 @@ export default function SignIn() {
         <img src={logo} alt="logo" />
       </div>
       <div className="flex justify-center w-full">
-        <form onSubmit={handleSubmit} style={{ width: "400px" }}>
+        <form style={{ width: "400px" }}>
           <div>
             <Input
               placeholder="Username"
@@ -49,7 +52,7 @@ export default function SignIn() {
             </Space>
           </div>
           <div>
-            <Button ghost style={{ width: "100%" }}>
+            <Button ghost style={{ width: "100%" }} onClick={handleSubmit}>
               Sign In
             </Button>
           </div>
