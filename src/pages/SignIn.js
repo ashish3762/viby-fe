@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/viby-logo.png";
 import { Button, Input, Space } from "antd";
 import { signIn } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const [signInFormInput, setsignInFormInput] = useState({});
 
   const handleChange = (event) => {
@@ -13,12 +15,24 @@ export default function SignIn() {
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     console.log(signInFormInput);
-    const data = await signIn(signInFormInput.username, signInFormInput.password);
+    const data = await signIn(
+      signInFormInput.username,
+      signInFormInput.password
+    );
     console.log(data);
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      navigate("/home");
+    }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   return (
     <div>
@@ -55,6 +69,12 @@ export default function SignIn() {
             <Button ghost style={{ width: "100%" }} onClick={handleSubmit}>
               Sign In
             </Button>
+          </div>
+          <div className="mt-5 text-center">
+            <span>Don't have an account?</span>
+            <a href="/sign-up" className="ml-2">
+              <u>Sign Up</u>
+            </a>
           </div>
         </form>
       </div>

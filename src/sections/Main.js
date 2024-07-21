@@ -239,8 +239,8 @@ export default function Main() {
   ];
 
   return (
-    <div className="flex justify-center w-full my-5">
-      <div className="flex">
+    <div className="flex justify-center ml-auto w-4/5">
+      <div className="flex my-5">
         <div style={{ maxWidth: "600px" }}>
           {posts.map((post) => (
             <div key={post.id} className="pb-5 mb-5 border-b border-gray-800">
@@ -290,9 +290,9 @@ export default function Main() {
             </div>
           ))}
         </div>
-        <div style={{ maxWidth: "400px" }} className="ml-10">
-          <div>Suggestions</div>
-          <div className="flex items-center">
+        <div className="ml-10 w-3/5">
+          <div className="w-full">Suggested for you</div>
+          <div className="flex items-center mt-5 w-full">
             <img
               src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
               alt="profile"
@@ -303,7 +303,7 @@ export default function Main() {
                 objectFit: "cover",
               }}
             />
-            <span>Profile Name</span>
+            <span className="pl-3">Ashish Gupta</span>
           </div>
         </div>
       </div>
