@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/viby-logo.png";
+import logo from "../assets/viby.png";
 import { Button, Input, Space } from "antd";
-import { signIn } from "../api/auth";
+import { signIn } from "../api/ApiService";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
@@ -18,19 +18,19 @@ export default function SignIn() {
   const handleSubmit = async () => {
     console.log(signInFormInput);
     const data = await signIn(
-      signInFormInput.username,
+      signInFormInput.email,
       signInFormInput.password
     );
     console.log(data);
     if (data.success) {
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/");
     }
   };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      navigate("/home");
+      navigate("/");
     }
   }, [navigate]);
 
@@ -39,13 +39,13 @@ export default function SignIn() {
       <div className="flex justify-center pt-10">
         <img src={logo} alt="logo" />
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full mt-10">
         <form style={{ width: "400px" }}>
           <div>
             <Input
-              placeholder="Username"
-              name="username"
-              value={signInFormInput.username}
+              placeholder="Email Address"
+              name="email"
+              value={signInFormInput.email}
               onChange={handleChange}
               style={{ width: "100%" }}
               className="mb-5"
@@ -66,13 +66,13 @@ export default function SignIn() {
             </Space>
           </div>
           <div>
-            <Button ghost style={{ width: "100%" }} onClick={handleSubmit}>
+            <Button style={{ width: "100%" }} onClick={handleSubmit}>
               Sign In
             </Button>
           </div>
           <div className="mt-5 text-center">
-            <span>Don't have an account?</span>
-            <a href="/sign-up" className="ml-2">
+            <span>Don't have an account yet?</span>
+            <a href="/register" className="ml-2">
               <u>Sign Up</u>
             </a>
           </div>

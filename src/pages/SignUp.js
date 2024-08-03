@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import logo from "../assets/viby-logo.png";
+import logo from "../assets/viby.png";
 import { Button, Input, Space } from "antd";
-import { signUp } from "../api/auth";
+import { signUp } from "../api/ApiService";
 
 export default function SignUp() {
   const [signUpFormInput, setsignUpFormInput] = useState({});
@@ -16,7 +16,8 @@ export default function SignUp() {
   const handleSubmit = async () => {
     console.log(signUpFormInput);
     const data = await signUp(
-      signUpFormInput.username,
+      signUpFormInput.firstName,
+      signUpFormInput.lastName,
       signUpFormInput.email,
       signUpFormInput.password
     );
@@ -28,13 +29,23 @@ export default function SignUp() {
       <div className="flex justify-center pt-10">
         <img src={logo} alt="logo" />
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full mt-10">
         <form style={{ width: "400px" }}>
           <div>
             <Input
-              placeholder="Username"
-              name="username"
-              value={signUpFormInput.username}
+              placeholder="First Name"
+              name="firstName"
+              value={signUpFormInput.firstName}
+              onChange={handleChange}
+              style={{ width: "100%" }}
+              className="mb-5"
+            />
+          </div>
+          <div>
+            <Input
+              placeholder="Last Name"
+              name="lastName"
+              value={signUpFormInput.lastName}
               onChange={handleChange}
               style={{ width: "100%" }}
               className="mb-5"
@@ -65,13 +76,13 @@ export default function SignUp() {
             </Space>
           </div>
           <div>
-            <Button ghost style={{ width: "100%" }} onClick={handleSubmit}>
+            <Button style={{ width: "100%" }} onClick={handleSubmit}>
               Sign Up
             </Button>
           </div>
           <div className="mt-5 text-center">
             <span>Already have an account?</span>
-            <a href="/sign-in" className="ml-2">
+            <a href="/login" className="ml-2">
               <u>Sign In</u>
             </a>
           </div>

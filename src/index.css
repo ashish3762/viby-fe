@@ -10,7 +10,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  background-color: rgb(0, 0, 0);
-  color: rgb(245, 245, 245);
+  background-color: #f4eee5;
+  color: #222222;
   height: 100vh;
+}
+
+.ant-input-outlined {
+  padding: 10px;
+}
+
+.ant-btn {
+  padding: 22px;
+  background-color: #222222;
+  color: #f4eee5;
+}
+
+.navigation {
+  background-color: #222222;
+  color: #f4eee5;
+}
+
+.image-card {
+  background-color: #e9e4db;
 }
