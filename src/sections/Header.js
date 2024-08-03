@@ -11,13 +11,16 @@ export default function Header() {
         <nav className="navigation flex justify-center p-2">
           <ul className="flex space-x-10">
             <li className="px-10">
-              <a href="/coffee">COFFEE</a>
+              <a href="/">COFFEE</a>
             </li>
             <li className="px-10">
               <a href="/subscription">SUBSCRIPTIONS</a>
             </li>
             <li className="px-10">
               <a href="/goods">GOODS</a>
+            </li>
+            <li className="px-10">
+              <a href="/login">PROFILE</a>
             </li>
           </ul>
         </nav>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../sections/Header";
 import { Button } from "antd";
 import { getProducts } from "../api/ApiService";
+import ProductCard from "../sections/ProductCard";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -24,7 +25,7 @@ export default function Home() {
         <div className="p-10 w-2/4 flex items-center justify-center">
           <div className="w-3/5">
             <div className="mb-4">JAMMY & SWEET</div>
-            <div className="text-5xl mb-4">ETHIOPIA IDIDO</div>
+            <div className="text-3xl mb-4">ETHIOPIA IDIDO</div>
             <div className="mb-4">
               This exquisite coffee from the Yirgacheffe region showcases the
               vibrancy of Ethiopian coffees.
@@ -47,20 +48,12 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <div className="text-5xl mb-4 text-center mt-10 mb-5">OUR TOP HITS</div>
+        <div className="text-3xl mb-4 text-center mt-10 mb-5">OUR TOP HITS</div>
       </div>
-      <div className="grid grid-cols-4 gap-10 mx-10">
+      <div className="grid grid-cols-4 gap-10 mx-40">
         {products?.map((product) => {
           return (
-            <div key={product.id}>
-              <img
-                src={product.imageurl}
-                alt={product.name}
-                className="image-card"
-              />
-              <div className="text-2xl my-2">{product.name.toUpperCase()}</div>
-              <div className="text-xl">${product.price}</div>
-            </div>
+            <ProductCard product={product}></ProductCard>
           );
         })}
       </div>

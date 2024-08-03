@@ -25,3 +25,13 @@ export const getProducts = async () => {
     const response = await axios.get(`${API_URL}/api/products`);
     return response.data;
 };
+
+export const getSubscriptions = async () => {
+    const response = await axios.get(`${API_URL}/api/subscriptions`);
+    return response.data;
+};
+
+export const getGoods = async () => {
+    const response = await axios.get(`${API_URL}/api/goods`);
+    return response.data;
+};

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import logo from "../assets/viby.png";
 import { Button, Input, Space } from "antd";
 import { signUp } from "../api/ApiService";
+import Header from "../sections/Header";
 
 export default function SignUp() {
   const [signUpFormInput, setsignUpFormInput] = useState({});
@@ -26,9 +26,8 @@ export default function SignUp() {
 
   return (
     <div>
-      <div className="flex justify-center pt-10">
-        <img src={logo} alt="logo" />
-      </div>
+      <Header></Header>
+      <div className="text-3xl my-10 text-center">CREATE ACCOUNT</div>
       <div className="flex justify-center w-full mt-10">
         <form style={{ width: "400px" }}>
           <div>
